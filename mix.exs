@@ -45,16 +45,15 @@ defmodule Plug.MixProject do
   def deps do
     [
       {:mime, "~> 1.0 or ~> 2.0"},
-      {:plug_crypto, plug_crypto_version()},
+      {:plug_crypto, "~> 1.1.1 or ~> 1.2 or ~> 2.0"},
       {:telemetry, "~> 0.4.3 or ~> 1.0"},
+
+      # Dev
+      {:blend, "~> 0.3.0", only: :dev},
+
+      # Docs
       {:ex_doc, "~> 0.21", only: :docs}
     ]
-  end
-
-  if System.get_env("PLUG_CRYPTO_2_0", "true") == "true" do
-    defp plug_crypto_version, do: "~> 1.1.1 or ~> 1.2 or ~> 2.0"
-  else
-    defp plug_crypto_version, do: "~> 1.1.1 or ~> 1.2"
   end
 
   defp package do

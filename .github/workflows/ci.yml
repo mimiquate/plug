@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-20.04
     env:
       MIX_ENV: test
-      PLUG_CRYPTO_2_0: "${{ matrix.PLUG_CRYPTO_2_0 }}"
     strategy:
       fail-fast: false
       matrix:
@@ -17,12 +16,11 @@ jobs:
           - pair:
               elixir: "1.10.4"
               otp: "21.3"
-            PLUG_CRYPTO_2_0: "false"
+            blend: plug_crypto_1
           - pair:
               elixir: "1.16"
               otp: "26.2"
               lint: lint
-            PLUG_CRYPTO_2_0: "true"
     steps:
       - uses: actions/checkout@v4
 
@@ -31,6 +29,10 @@ jobs:
         with:
           otp-version: ${{ matrix.pair.otp }}
           elixir-version: ${{ matrix.pair.elixir }}
+
+      - name: Use lock file variant
+        run: cp blend/${{ matrix.blend }}.mix.lock mix.lock
+        if: matrix.blend
 
       - name: Install dependencies
         run: mix deps.get
