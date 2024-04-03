@@ -18,6 +18,14 @@ jobs:
               otp: "21.3"
             blend: plug_crypto_1
           - pair:
+              elixir: "1.11.4"
+              otp: "22.3"
+            blend: mime_1
+          - pair:
+              elixir: "1.11.4"
+              otp: "22.3"
+            blend: telemetry_0
+          - pair:
               elixir: "1.16"
               otp: "26.2"
               lint: lint
