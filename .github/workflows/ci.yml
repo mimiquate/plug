@@ -16,7 +16,7 @@ jobs:
           - pair:
               elixir: "1.10.4"
               otp: "21.3"
-            blend: plug_crypto_1
+            blend: old
           - pair:
               elixir: "1.16"
               otp: "26.2"
